@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './../css/Header.css';
 import me from './../Image/me.png';
 
 const Header = () => {
   const [currentText, setCurrentText] = useState('');
   const [textIndex, setTextIndex] = useState(0);
-  const texts = [
+  const [animationsComplete, setAnimationsComplete] = useState(false);
+
+  const texts = useMemo(() => [
     'Namaste! 🙏',
     'Welcome to my portfolio page',
     'My name is Ishaan Vashishth',
     'Wanna know more about me?',
     'But promise me first you will offer me a job after reading it 😂 just kidding',
     'Just scroll'
-  ];
-  const [animationsComplete, setAnimationsComplete] = useState(false);
+  ], []);
 
   useEffect(() => {
     if (textIndex < texts.length) {

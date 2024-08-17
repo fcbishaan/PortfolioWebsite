@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from 'react'
-import '../css/Languages.css'
+import React, { useEffect, useRef } from 'react';
+import '../css/Languages.css';
 
 const Language = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    const currentRef = sectionRef.current;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -14,13 +16,13 @@ const Language = () => {
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -29,7 +31,7 @@ const Language = () => {
     { name: 'Hindi', level: 'Native', proficiency: 100 },
     { name: 'English', level: 'C1 Proficiency', proficiency: 90 },
     { name: 'Russian', level: 'B1 Proficiency', proficiency: 60 }
-  ]
+  ];
 
   return (
     <div className="section language-section" ref={sectionRef}>
@@ -49,7 +51,7 @@ const Language = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Language
+export default Language;

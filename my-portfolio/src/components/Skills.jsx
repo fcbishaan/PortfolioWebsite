@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from 'react'
-import '../css/Skills.css'
+import React, { useEffect, useRef } from 'react';
+import '../css/Skills.css';
 
 const Skills = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    const currentRef = sectionRef.current;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -14,13 +16,13 @@ const Skills = () => {
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -73,7 +75,7 @@ const Skills = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Skills
+export default Skills;

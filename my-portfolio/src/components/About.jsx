@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import "./../css/About.css";
-
+import resume from "../../src/assets/Ishaan_vashishth_resume.pdf";
 const About = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    const currentRef = sectionRef.current;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -14,13 +16,13 @@ const About = () => {
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -40,7 +42,7 @@ const About = () => {
           </ul>
           <p>I've applied my skills to real-world projects, including an E-commerce website and Job portal website, currently hosted on GitHub.</p>
           <p>My goal is to leverage my technical expertise to contribute to forward-thinking projects in the software development industry.</p>
-          <a href={`${process.env.PUBLIC_URL}/Ishaan_vashishth_resume.pdf`} download className="resume-download">
+          <a href={resume} download className="resume-download">
             Download Resume
           </a>
         </div>

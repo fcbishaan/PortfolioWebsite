@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import "./../css/Projects.css";
+import './../css/Projects.css';
 import jobImage from "../assets/job.png";
 import ecommerceImage from "../assets/E-commerce.jpeg";
 import scrumImage from "../assets/scrum.png";
@@ -8,6 +8,8 @@ const Projects = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    const currentRef = sectionRef.current;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -17,13 +19,13 @@ const Projects = () => {
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
